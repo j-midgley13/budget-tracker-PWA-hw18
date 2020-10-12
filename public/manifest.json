@@ -10,5 +10,12 @@
             "sizes": "512x512",
             "type": "image/png"
         }
-    ]
+    ],
+    "name": "Budget Tracker",
+    "short_name": "Budget",
+    "display": "standalone",
+    "start_url": "/",
+    "description": "This application allows you to track your budget online or offline!",
+    "background_color": "#01579b",
+    "theme_color": "#ffffff"
 } 
