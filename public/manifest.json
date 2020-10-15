@@ -16,6 +16,6 @@
     "display": "standalone",
     "start_url": "/",
     "description": "This application allows you to track your budget online or offline!",
-    "background_color": "#01579b",
+    "background_color": "#ffffff",
     "theme_color": "#ffffff"
 } 
