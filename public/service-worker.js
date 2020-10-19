@@ -21,6 +21,19 @@ self.addEventListener('install', (event) => {
     self.skipWaiting();
 });
 
+self.addEventListener('activate', (event) =>{
+    console.log("searching for older cached data")
+    const cacheDuo = [CACHE_NAME, DATA_CACHE_NAME];
+    event.waitUntil(caches.keys().then(keyList =>{
+        keyList.map(key => {
+            if (key !== cacheDuo){
+                console.log("removing older iteration of cached data", key);
+                return caches.delete(key)
+            };
+        });
+    }));
+});
+
 self.addEventListener("fetch", function(event) {
     // cache successful requests to the API
     if (event.request.url.includes("/api/")) {
