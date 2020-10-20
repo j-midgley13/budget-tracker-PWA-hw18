@@ -46,16 +46,13 @@ self.addEventListener("fetch", function(event) {
               if (response.status === 200) {
                 cache.put(event.request.url, response.clone());
               }
-  
               return response;
             })
             .catch(error => {
-              // Network request failed, try to get it from the cache.
               return cache.match(event.request);
             });
         }).catch(error => console.log(error))
       );
-  
       return;
     }
   
@@ -63,8 +60,11 @@ self.addEventListener("fetch", function(event) {
     event.respondWith(
         fetch(event.request).catch(function(){
             return caches.match(event.request).then(function(response) {
-                return response;
+                if (response){return response}
+                else if (event.request.headers.get("accept").includes("text/html")) {
+                    return caches.match("/")}
             })
+
         })
     );
 });

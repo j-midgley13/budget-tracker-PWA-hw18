@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Transaction = require("../models/transaction.js");
+const Transaction = require("../models/transaction");
 const path = require("path");
 
 router.get("/", function(req, res) {
